@@ -1,14 +1,16 @@
 <template>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+  <OCRComponents />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+// import HelloWorld from './components/HelloWorld.vue'
+import OCRComponents from './components/OCRComponents.vue';
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HelloWorld,
+    OCRComponents
   }
 }
 </script>
