@@ -1,16 +1,17 @@
 <template>
     <div>
-        <input type="file" @change="handleUploadFile">
+        <input type="file" @change="handleUploadFile" />
         <img :src="imgUrl" alt="Uploaded Image">
     </div>
 </template>
 
 <script>
+// import axios from 'axios';
 export default {
     name: 'OCRComponents',
     data() {
         return {
-            imgUrl: '',
+            imgUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             recognizedText: ''
         }
     },
@@ -33,34 +34,33 @@ export default {
             }
         },
         IntegrationOCR() {
-            // const serverEndPoint = "http://localhost:3000/perform-ocr"
-            // // console.log('jjj')
+            // const serverEndPoint = "http://localhost:3000/perform-ocr";
             // fetch(serverEndPoint, {
-            //     method: 'POST', headers: { 'content-type': 'application/json' },
-            //     body: JSON.stringify({ imgUrl: this.imgUrl })
-            // }).then((response)=>{
-            //     response.json();
-            // }).then((data)=>{
-            //     console.log('data...!!!???',data);
-            //     this.recognizedText = data;
-            // });
-
-            const serverEndPoint = "http://localhost:3000/perform-ocr";
-
+            //     method: 'POST',
+            //     headers: { 'content-type': 'application/json' },
+            //     body: JSON.stringify({ imgUrl: "abdulkadirkhan" })
+            // }).then((response) => response.json()) // Add return statement here
+            //     .then((data) => {
+            //         console.log('data...!!!???', data);
+            //         this.recognizedText = data;
+            //     }).catch((error) => {
+            //         console.error('Error during fetch:', error);
+            //     });
+            const serverEndPoint = 'http://localhost:3000/perform-ocr';
             fetch(serverEndPoint, {
                 method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({ imgUrl: "abdulkadirkhan" })
-            })
-                .then((response) => response.json()) // Add return statement here
-                .then((data) => {
-                    console.log('data...!!!???', data);
-                    this.recognizedText = data;
-                })
-                .catch((error) => {
+                mode:'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ imgUrl: this.imgUrl }),
+            }).then((response) => response.json()).then((data) => {
+                    // console.log('OCR Result:', data.recognizedText);
+                    // this.recognizedText = data.recognizedText;
+                    console.log('recognise text.......????????',data);
+                }).catch((error) => {
                     console.error('Error during fetch:', error);
                 });
-
         }
     }
 
