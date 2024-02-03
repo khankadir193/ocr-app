@@ -1,16 +1,19 @@
 <template>
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <OCRComponents />
+  <!-- <OCRComponents /> -->
+  <FIleUploadOCR />
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import OCRComponents from './components/OCRComponents.vue';
+// import OCRComponents from './components/OCRComponents.vue';
+import FIleUploadOCR from './components/FIleUploadOCR.vue';
 export default {
   name: 'App',
   components: {
     // HelloWorld,
-    OCRComponents
+    // OCRComponents
+    FIleUploadOCR
   }
 }
 </script>
