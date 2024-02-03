@@ -16,15 +16,26 @@ export default {
     data() {
         return {
             imageUrl: null,
+            fileImgUrl: null
         };
     },
     methods: {
         handleFileUpload(event) {
             const fileInput = event.target;
             const file = fileInput.files[0];
+            this.fileImgUrl = file.name;
 
             if (file) {
-                this.convertImageToDataUrl(file);
+                console.log('File Name:', file.name);
+                console.log('File Type:', file.type);
+
+                // If you still want to attempt to get the webkitRelativePath
+                if ('webkitRelativePath' in file) {
+                    console.log('Webkit Relative Path:', file.webkitRelativePath);
+                }
+                //this.convertImageToDataUrl(file);
+            }else{
+                console.log("Browser is not supporting");
             }
         },
         convertImageToDataUrl(file) {
@@ -35,13 +46,15 @@ export default {
             };
 
             // Read the file as a data URL
-            reader.readAsDataURL(file);
+            console.log('-------------khan', reader.readAsDataURL(file));
         },
         submitToOCR() {
+            console.log('fileImageUrl..??', this.fileImgUrl);
+            console.log('imageURl by abdulkadirkhan...', this.imageUrl);
             const apikey = 'helloworld'; // Replace with your OCR API key
             const language = 'eng'; // Adjust the language code as needed
-            const url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiz2JE_h1wmLG1hcXyF-4IMsItOC4vDlZ0_yW4DUBtdw&s";
-
+            // const url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiz2JE_h1wmLG1hcXyF-4IMsItOC4vDlZ0_yW4DUBtdw&s";
+            const url = this.imageUrl;
             const frmData = new FormData();
             frmData.append('apikey', apikey);
             frmData.append('language', language);
@@ -54,7 +67,7 @@ export default {
 
             if (this.imageUrl) {
                 // Make a POST request to the OCR API
-                axios.post('https://api.ocr.space/parse/image',frmData,{headers})
+                axios.post('https://api.ocr.space/parse/image', frmData, { headers })
                     .then(response => {
                         // Handle OCR API response
                         const ocrResult = response.data;
