@@ -1,33 +1,31 @@
 <template>
   <div>
     <h1>VueDropDown</h1>
-    <vue2-dropzone
-      id="my-dropzone"
-      ref="myDropzone"
-      :options="dropzoneOptions"
-      @vdropzone-success="onFileUploadSuccess"
-    ></vue2-dropzone>
+    <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions"></vue-dropzone>
+
   </div>
 </template>
 
 <script>
-// import 'vue2-dropzone/dist/vue2Dropzone.min.css'; // Import the CSS for styling
-// import VueDropzone from 'vue2-dropzone'; // Import the VueDropzone component
-// import 'dropzone/dist/dropzone.min.css'; // Import Dropzone.js styles
 
+import vue2Dropzone from 'vue2-dropzone'
+import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 export default {
-  name: 'VueDropDown',
+  name: 'app',
   components: {
-    // VueDropzone,
+    vueDropzone: vue2Dropzone
   },
-  data() {
+  data: function () {
     return {
       dropzoneOptions: {
-        url: '/your-upload-endpoint', // Set your upload endpoint
-        // Other Dropzone.js options...
-      },
-    };
-  },
+          url: 'https://httpbin.org/post',
+          thumbnailWidth: 150,
+          maxFilesize: 0.5,
+          headers: { "My-Awesome-Header": "header value" }
+      }
+    }
+  }
+,
   methods: {
     onFileUploadSuccess(file) {
       // Access file information
