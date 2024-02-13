@@ -2,24 +2,24 @@
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <!-- <OCRComponents /> -->
   <!-- <FIleUploadOCR /> -->
-  <!-- <FileUpload2 /> -->
-  <VueDropDown />
+  <FileUpload2 />
+  <!-- <VueDropDown /> -->
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import OCRComponents from './components/OCRComponents.vue';
 // import FIleUploadOCR from './components/FIleUploadOCR.vue';
-// import FileUpload2 from './components/FileUpload2.vue';
-import VueDropDown from './components/VueDropDown.vue';
+import FileUpload2 from './components/FileUpload2.vue';
+// import VueDropDown from './components/VueDropDown.vue';
 export default {
   name: 'App',
   components: {
     // HelloWorld,
     // OCRComponents
     // FIleUploadOCR
-    // FileUpload2
-    VueDropDown
+    FileUpload2
+    // VueDropDown
     
   }
 }

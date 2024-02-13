@@ -49,12 +49,13 @@ export default {
             console.log('-------------khan', reader.readAsDataURL(file));
         },
         submitToOCR() {
-            console.log('fileImageUrl..??', this.fileImgUrl);
+            // console.log('fileImageUrl..??', this.fileImgUrl);
             console.log('imageURl by abdulkadirkhan...', this.imageUrl);
             const apikey = 'helloworld'; // Replace with your OCR API key
             const language = 'eng'; // Adjust the language code as needed
-            // const url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiz2JE_h1wmLG1hcXyF-4IMsItOC4vDlZ0_yW4DUBtdw&s";
-            const url = this.imageUrl;
+            //image url to extract the from the image..
+            const url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiz2JE_h1wmLG1hcXyF-4IMsItOC4vDlZ0_yW4DUBtdw&s";
+            // const url = this.imageUrl;
             const frmData = new FormData();
             frmData.append('apikey', apikey);
             frmData.append('language', language);
@@ -67,7 +68,7 @@ export default {
 
             if (this.imageUrl) {
                 // Make a POST request to the OCR API
-                axios.post('https://api.ocr.space/parse/image', frmData, { headers })
+                axios.post('https://api.ocr.space/parse/image',frmData,{ headers })
                     .then(response => {
                         // Handle OCR API response
                         const ocrResult = response.data;
